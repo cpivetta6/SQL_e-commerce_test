@@ -1,16 +1,23 @@
+#Create the Client
+
 create table client(
 id int primary key,
 name varchar(150) not null,
 email varchar(255) not null
 );
 
+#Control data
+
 select * from client
+
+#Create a PhoneList
 
 create table phonelist(
 id int primary key,
 phone varchar (150) not null
 )
 
+#Insert data into Client
 
 insert into client(id, name, email)
 values(
@@ -20,12 +27,40 @@ values(
 	);
 
 
+#Inser number in the phone list
 insert into phonelist(id, phone)
 values(1, '32242345662')
 
+#Add foreign key on client
 alter table client
 add foreign key (id) references phonelist(id)
 
+#Inner Join on client and Phone
 SELECT client.id, client.name, client.email, phonelist.id, phonelist.phone
 FROM client
 INNER JOIN phonelist ON client.id = phonelist.id;
+
+#Create Address Table
+
+Create table Address(
+id int primary key,
+Square varchar(155) not null,
+Avenue varchar(255) not null,
+number varchar(75) not null,
+foreign key (id) references city(id)
+);
+
+#Create State Table
+Create table State(
+id int primary key,
+name varchar(155) not null
+);
+
+#Create City Table
+Create table City(
+id int primary key,
+name varchar(155) not null
+);
+
+
+
