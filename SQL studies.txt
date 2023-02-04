@@ -1,0 +1,31 @@
+create table client(
+id int primary key,
+name varchar(150) not null,
+email varchar(255) not null
+);
+
+select * from client
+
+create table phonelist(
+id int primary key,
+phone varchar (150) not null
+)
+
+
+insert into client(id, name, email)
+values(
+	1,
+	'Bob Burnquist',
+	'bob@gmail.com'
+	);
+
+
+insert into phonelist(id, phone)
+values(1, '32242345662')
+
+alter table client
+add foreign key (id) references phonelist(id)
+
+SELECT client.id, client.name, client.email, phonelist.id, phonelist.phone
+FROM client
+INNER JOIN phonelist ON client.id = phonelist.id;
