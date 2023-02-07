@@ -114,3 +114,10 @@ update address
 set city_id = 1
 where id = 1
 
+#Created a product and added the items
+
+insert into product(id, name, price)
+values(1, 'TV', 400.0),
+	   (2, 'Computer', 500.0),
+       (3, 'Tablet', 800.0)
+
