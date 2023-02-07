@@ -50,6 +50,8 @@ number varchar(75) not null,
 foreign key (id) references city(id)
 );
 
+
+
 #Create State Table
 Create table State(
 id int primary key,
@@ -62,5 +64,53 @@ id int primary key,
 name varchar(155) not null
 );
 
+#Add Foreign key State ID on City
 
+Alter table city
+add constraint state
+foreign key (id)
+references state (id)
+
+#Insert states on the table
+
+insert into state (id, name)
+values (1, 'Veneto'),
+		(2, 'Trentino Alto Adige'),
+        (3, 'Piemonte'),
+        (4, 'Toscana'),
+        (5, 'Lombardia');
+
+#Insert foreign key state on city
+
+alter table city
+add foreign key (id) references state(id)
+
+#Create Cities on table CITY
+
+insert into city(id, name)
+values(1, 'Verona'),
+	  (2, 'Bolzano'),
+      (3, 'Torino'),
+      (4, 'Firenze'),
+      (5, 'Milano');
+
+#Join Column State_id
+
+alter table city
+add state_id int not null
+
+#update all state_id from city
+update city
+set state_id = 1
+where id = 1
+
+#Insert data into Address
+
+insert into address (id, square, avenue, number)
+values(1, 'via mazzini', 'centro', 40);
+
+#Insert city_id on Address
+update address
+set city_id = 1
+where id = 1
 
